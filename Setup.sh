@@ -8,10 +8,7 @@ sudo ufw allow SSH
 sudo ufw allow 'Nginx HTTP'
 sudo ufw enable
 
-sudo 
-
-
-install php7.2-cli
+sudo install php7.2-cli
 sudo apt install php7.2
 sudo apt-get install php7.2-zip
 sudo apt install python-softlayer
