@@ -12,9 +12,6 @@ sudo apt install php-fpm php-mysql
 sudo ufw enable
 sudo apt-get update && sudo apt-get upgrade
 
-#sites-available config from Martin's repo
-
-
 sudo systemctl reload nginx
 
 #Install composer
@@ -29,11 +26,17 @@ sudo apt-get update && sudo apt-get upgrade
 #Install requiered PHP Mobules
 sudo apt install php-mbstring php-xml php-bcmath
 
+
+#sites-available config from Martin's repo
+
 #Creating Database
 
 #Creating Laravel app
 cd ~
 composer create-project --prefer-dist laravel/laravel Naposao
+
+
+
 
 
 
