@@ -103,3 +103,5 @@ sudo git clone https://github.com/xeac/naposao.git
 
 sudo chown -R www-data.www-data /var/www/naposao/storage
 sudo chown -R www-data.www-data /var/www/naposao/bootstrap/cache
+
+#Continue with Database migration
