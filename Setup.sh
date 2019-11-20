@@ -95,4 +95,11 @@ sudo ln -s /etc/nginx/sites-available/naposao /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl reload nginx
 
+#removed all projects from /var/www folder
 
+#Git installation
+sudo apt-get install git
+sudo git clone https://github.com/xeac/naposao.git
+
+sudo chown -R www-data.www-data /var/www/naposao/storage
+sudo chown -R www-data.www-data /var/www/naposao/bootstrap/cache
