@@ -1,4 +1,5 @@
-# Once Ubuntu VM is ready and you are logged in, execute the following comands:
+#Create an Ubuntu VM with ports enabled 22, 80, 443, 3306 
+#Once Ubuntu VM is ready and you are logged in, execute the following comands:
 
 sudo usermod -aG sudo $(whoami)
 
@@ -6,6 +7,7 @@ sudo ufw allow OpenSSH
 sudo apt-get update
 sudo apt install nginx
 sudo ufw allow 'Nginx HTTP'
+sudo ufw allow 3306 
 sudo apt install mysql-server
 sudo add-apt-repository universe
 sudo apt install php-fpm php-mysql
@@ -105,3 +107,12 @@ sudo chown -R www-data.www-data /var/www/naposao/storage
 sudo chown -R www-data.www-data /var/www/naposao/bootstrap/cache
 
 #Continue with Database migration
+sudo mysql
+CREATE DATABASE naposao;
+GRANT ALL ON *.* to 'xeac'@'%' IDENTIFIED BY 'PassWord12!@' WITH GRANT OPTION;
+GRANT ALL ON *.* to 'naposaor_admin'@'%' IDENTIFIED BY 'PassWord12!@' WITH GRANT OPTION;
+flush privileges;
+exit
+
+/etc/mysql/mysql.conf.d/mysqld.cnf # remove bind address
+sudo /etc/init.d/mysql restart
