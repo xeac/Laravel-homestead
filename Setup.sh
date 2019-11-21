@@ -108,7 +108,7 @@ sudo chown -R www-data.www-data /var/www/naposao/bootstrap/cache
 
 #Continue with Database migration
 sudo mysql
-CREATE DATABASE naposao;
+CREATE DATABASE naposaor_posao;
 GRANT ALL ON *.* to 'xeac'@'%' IDENTIFIED BY 'PassWord12!@' WITH GRANT OPTION;
 GRANT ALL ON *.* to 'naposaor_admin'@'%' IDENTIFIED BY 'PassWord12!@' WITH GRANT OPTION;
 flush privileges;
@@ -116,3 +116,6 @@ exit
 
 /etc/mysql/mysql.conf.d/mysqld.cnf # remove bind address
 sudo /etc/init.d/mysql restart
+
+#Import dump database into naposaor_posao DB;
+#Site ready
