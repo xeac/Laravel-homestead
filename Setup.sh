@@ -1,13 +1,36 @@
 #Create an Ubuntu VM with ports enabled 22, 80, 443, 3306 
 #Once Ubuntu VM is ready and you are logged in, execute the following comands:
 
+#Set variables
+#Case 1 read from console
+
+echo "Type the name of the laravel project ex. naposao, followed by [ENTER]:"
+
+read project
+
+if [ -z "$project" ] then
+      echo "\$project is empty"
+      exit 1
+fi
+
+#Case 2 set in the script
+project_name = "naposao"
+
+#Case 3 read from file
+
+project_from_file = cat path_to_tile
+
+#add current user to the sudoers
 sudo usermod -aG sudo $(whoami)
 
 sudo ufw allow OpenSSH
+
 sudo apt-get update
+
 sudo apt install nginx
 sudo ufw allow 'Nginx HTTP'
 sudo ufw allow 3306 
+
 sudo apt install mysql-server
 sudo add-apt-repository universe
 sudo apt install php-fpm php-mysql
@@ -31,8 +54,8 @@ sudo chown -R $USER ~/.composer/
 
 #Create laravel project
 cd ~
-composer create-project --prefer-dist laravel/laravel naposao
-cd naposao
+composer create-project --prefer-dist laravel/laravel $project #naposao
+cd $project
 
 # copy original .env from the site to  .env
 sudo nano .env
@@ -53,10 +76,10 @@ sudo nano .env
 #DB_PASSWORD=password
 
 
-sudo mv ~/naposao /var/www/naposao
-sudo chown -R www-data.www-data /var/www/naposao/storage
-sudo chown -R www-data.www-data /var/www/naposao/bootstrap/cache
-sudo nano /etc/nginx/sites-available/naposao
+sudo mv ~/$project /var/www/$project
+sudo chown -R www-data.www-data /var/www/$project/storage
+sudo chown -R www-data.www-data /var/www/$project/bootstrap/cache
+sudo nano /etc/nginx/sites-available/$project
 
 
 #sudo cat server >> {  /etc/nginx/sites-available/$dir
