@@ -18,7 +18,7 @@ project_name = "naposao"
 
 #Case 3 read from file
 
-project_from_file = cat path_to_tile
+project_from_file =$(cat path_to_tile/file_name)
 
 #add current user to the sudoers
 sudo usermod -aG sudo $(whoami)
